@@ -48,8 +48,8 @@ public enum ALActivation {
 
 public enum ALConstraintRelation: Int {
     case equalTo = 0
-    case equalOrLessThan = -1
-    case equalOrGreaterThan = 1
+    case lessThanOrEqualTo = -1
+    case greaterThanOrEqualTo = 1
 }
 
 public enum ALConstraintPriority: ALLayoutPriority {
@@ -153,7 +153,7 @@ public extension Lollipop {
     
     @discardableResult
     public func centerX(equalTo view: Lollipop,
-                        _ anchor: ALXAxisAnchor? = nil,
+                        anchor: ALXAxisAnchor? = nil,
                         offset: ALFloat = 0,
                         priority: ALConstraintPriority = .default,
                         isActive: ALActivation = .active) -> ALConstraint {
@@ -165,7 +165,7 @@ public extension Lollipop {
     
     @discardableResult
     public func centerY(equalTo view: Lollipop,
-                        _ anchor: ALYAxisAnchor? = nil,
+                        anchor: ALYAxisAnchor? = nil,
                         offset: ALFloat = 0,
                         priority: ALConstraintPriority = .default,
                         isActive: ALActivation = .active) -> ALConstraint {
@@ -251,8 +251,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return widthAnchor.constraint(equalToConstant: width).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return widthAnchor.constraint(lessThanOrEqualToConstant: width).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return widthAnchor.constraint(greaterThanOrEqualToConstant: width).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return widthAnchor.constraint(lessThanOrEqualToConstant: width).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return widthAnchor.constraint(greaterThanOrEqualToConstant: width).with(priority: priority).set(active: isActive)
         }
     }
 
@@ -268,8 +268,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return widthAnchor.constraint(equalTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return widthAnchor.constraint(lessThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return widthAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return widthAnchor.constraint(lessThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return widthAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
     
@@ -306,8 +306,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return heightAnchor.constraint(equalToConstant: height).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return heightAnchor.constraint(lessThanOrEqualToConstant: height).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return heightAnchor.constraint(greaterThanOrEqualToConstant: height).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return heightAnchor.constraint(lessThanOrEqualToConstant: height).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return heightAnchor.constraint(greaterThanOrEqualToConstant: height).with(priority: priority).set(active: isActive)
         }
     }
     
@@ -323,8 +323,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return heightAnchor.constraint(equalTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return heightAnchor.constraint(lessThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return heightAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return heightAnchor.constraint(lessThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return heightAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
     
@@ -363,8 +363,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return leadingAnchor.constraint(equalTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return leadingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return leadingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return leadingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return leadingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
     
@@ -379,8 +379,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return leftAnchor.constraint(equalTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return leftAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return leftAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return leftAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return leftAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
 }
@@ -398,8 +398,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return trailingAnchor.constraint(equalTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return trailingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return trailingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return trailingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return trailingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
     
@@ -414,8 +414,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return rightAnchor.constraint(equalTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return rightAnchor.constraint(lessThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return rightAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return rightAnchor.constraint(lessThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return rightAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
 }
@@ -433,8 +433,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return topAnchor.constraint(equalTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return topAnchor.constraint(lessThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return topAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return topAnchor.constraint(lessThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return topAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
 }
@@ -452,8 +452,8 @@ public extension Lollipop {
         
         switch relation {
         case .equalTo: return bottomAnchor.constraint(equalTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrLessThan: return bottomAnchor.constraint(lessThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .equalOrGreaterThan: return bottomAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .lessThanOrEqualTo: return bottomAnchor.constraint(lessThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .greaterThanOrEqualTo: return bottomAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
         }
     }
 }

@@ -24,6 +24,10 @@
 
 `Lollipop` is a syntactic sugar for `Auto Layout`.
 
+<p align="center">
+  <img src="./Sample-Lollipop.gif" alt="Sample-Lollipop">
+</p>
+
 ## Requirements
 
 * iOS 9.0+
@@ -113,14 +117,14 @@ public func center(in view: Lollipop,
 
 @discardableResult
 public func centerX(equalTo view: Lollipop,
-                    _ anchor: ALXAxisAnchor? = nil,
+                    anchor: ALXAxisAnchor? = nil,
                     offset: ALFloat = 0,
                     priority: ALConstraintPriority = .default,
                     isActive: ALActivation = .active) -> ALConstraint
 
 @discardableResult
 public func centerY(equalTo view: Lollipop,
-                    _ anchor: ALYAxisAnchor? = nil,
+                    anchor: ALYAxisAnchor? = nil,
                     offset: ALFloat = 0,
                     priority: ALConstraintPriority = .default,
                     isActive: ALActivation = .active) -> ALConstraint
@@ -270,13 +274,13 @@ import Foundation
 #if os(OSX)
     import AppKit
 
-    typealias Color = NSColor
-    typealias Controller = NSViewController
+    public typealias Color = NSColor
+    public typealias Controller = NSViewController
 #else
     import UIKit
 
-    typealias Color = UIColor
-    typealias Controller = UIViewController
+    public typealias Color = UIColor
+    public typealias Controller = UIViewController
 #endif
 import Lollipop
 

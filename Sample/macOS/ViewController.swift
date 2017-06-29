@@ -15,13 +15,5 @@ class ViewController: NSViewController {
 
         addItems(to: self.view)
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
 }
 

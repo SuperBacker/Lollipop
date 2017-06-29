@@ -22,6 +22,8 @@
 		5CD75D3B1F05232200A11DFA /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD75D0C1F05226600A11DFA /* Common.swift */; };
 		5CD75D6B1F05289600A11DFA /* Lollipop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD75D6A1F05289600A11DFA /* Lollipop.framework */; };
 		5CD75D6D1F0528A500A11DFA /* Lollipop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD75D6C1F0528A500A11DFA /* Lollipop.framework */; };
+		5CD75D6F1F05309900A11DFA /* AnimatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD75D6E1F05309900A11DFA /* AnimatorViewController.swift */; };
+		5CD75D931F05473100A11DFA /* CocoaAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD75D921F05473100A11DFA /* CocoaAnimator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +60,8 @@
 		5CD75D371F05231E00A11DFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CD75D6A1F05289600A11DFA /* Lollipop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lollipop.framework; path = "../../../../Library/Developer/Xcode/DerivedData/LollipopSample-eamgzrhulrrawbcsxpusenqzozmy/Build/Products/Debug/Lollipop-OSX/Lollipop.framework"; sourceTree = "<group>"; };
 		5CD75D6C1F0528A500A11DFA /* Lollipop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lollipop.framework; path = "Pods/../build/Debug-iphoneos/Lollipop-iOS/Lollipop.framework"; sourceTree = "<group>"; };
+		5CD75D6E1F05309900A11DFA /* AnimatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatorViewController.swift; sourceTree = "<group>"; };
+		5CD75D921F05473100A11DFA /* CocoaAnimator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAnimator.framework; path = "../../../../Library/Developer/Xcode/DerivedData/LollipopSample-eamgzrhulrrawbcsxpusenqzozmy/Build/Products/Debug/CocoaAnimator/CocoaAnimator.framework"; sourceTree = "<group>"; };
 		5CF10AC11F05004C00B036FF /* Lollipop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lollipop.framework; path = "Pods/../build/Debug-iphoneos/Lollipop/Lollipop.framework"; sourceTree = "<group>"; };
 		63E668E6103EC7334CCAC6C8 /* Pods_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6439C815988BA13636A737FB /* Pods-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS/Pods-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD75D931F05473100A11DFA /* CocoaAnimator.framework in Frameworks */,
 				5CD75D6B1F05289600A11DFA /* Lollipop.framework in Frameworks */,
 				3DE66EA84037117D0659415C /* Pods_macOS.framework in Frameworks */,
 			);
@@ -106,6 +111,7 @@
 			children = (
 				5CD75D2B1F05231E00A11DFA /* AppDelegate.swift */,
 				5CD75D2D1F05231E00A11DFA /* ViewController.swift */,
+				5CD75D6E1F05309900A11DFA /* AnimatorViewController.swift */,
 				5CD75D2F1F05231E00A11DFA /* Main.storyboard */,
 				5CD75D321F05231E00A11DFA /* Assets.xcassets */,
 				5CD75D341F05231E00A11DFA /* LaunchScreen.storyboard */,
@@ -151,6 +157,7 @@
 		E7DCABB9F5406F080C88041F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CD75D921F05473100A11DFA /* CocoaAnimator.framework */,
 				5CD75D6C1F0528A500A11DFA /* Lollipop.framework */,
 				5CD75D6A1F05289600A11DFA /* Lollipop.framework */,
 				5C84AF7A1F0500CB001B67BF /* Lollipop.framework */,
@@ -378,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CD75D3B1F05232200A11DFA /* Common.swift in Sources */,
+				5CD75D6F1F05309900A11DFA /* AnimatorViewController.swift in Sources */,
 				5CD75D2E1F05231E00A11DFA /* ViewController.swift in Sources */,
 				5CD75D2C1F05231E00A11DFA /* AppDelegate.swift in Sources */,
 			);

@@ -13,8 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.view.setColor(UIColor.white)
         addItems(to: self.view)
+        
+        let next = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(showNext))
+        self.navigationItem.rightBarButtonItem = next
+    }
+    
+    func showNext() {
+        let next = AnimatorViewController()
+        self.navigationController?.pushViewController(next, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

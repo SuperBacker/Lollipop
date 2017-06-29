@@ -22,7 +22,7 @@
 
 ## What's this?
 
-`🍬 Lollipop` is a syntactic sugar for `Auto Layout`.
+`Lollipop` is a syntactic sugar for `Auto Layout`.
 
 ## Requirements
 
@@ -306,3 +306,7 @@ class ViewController: Controller {
     }
 }
 ```
+
+![iOS](./Assets/Sample-iOS.png)
+
+![macOS](./Assets/Sample-macOS.png)

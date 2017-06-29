@@ -1,0 +1,15 @@
+
+def auto()
+  use_frameworks!
+  pod 'Lollipop', :path => '../'
+end
+
+target 'iOS' do
+  platform :ios, '9.0'
+  auto()
+end
+
+target 'macOS' do
+  platform :osx, '10.11'
+  auto()
+end

@@ -1,0 +1,16 @@
+PODS:
+  - Lollipop (1.0.0)
+
+DEPENDENCIES:
+  - Lollipop (from `../`)
+
+EXTERNAL SOURCES:
+  Lollipop:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Lollipop: 80b3bc942f6f1362d4082c6b64b772225e3ed073
+
+PODFILE CHECKSUM: '09ba357c99f1cfec32dd19e11f8ecd6761cc51bc'
+
+COCOAPODS: 1.2.1

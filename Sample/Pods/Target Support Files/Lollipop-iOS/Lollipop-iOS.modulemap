@@ -1,0 +1,6 @@
+framework module Lollipop {
+  umbrella header "Lollipop-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

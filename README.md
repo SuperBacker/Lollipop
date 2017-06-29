@@ -310,7 +310,3 @@ class ViewController: Controller {
     }
 }
 ```
-
-![iOS](./Assets/Sample-iOS.png)
-
-![macOS](./Assets/Sample-macOS.png)

@@ -25,7 +25,7 @@
 `Lollipop` is a syntactic sugar for `Auto Layout`.
 
 <p align="center">
-  <img src="./Sample-Lollipop.gif" alt="Sample-Lollipop">
+  <img src="./Assets/Sample-Lollipop.gif" alt="Sample-Lollipop">
 </p>
 
 ## Requirements

@@ -82,8 +82,9 @@ public typealias ALYAxisAnchor = NSLayoutYAxisAnchor
 
 public typealias ALConstraint = NSLayoutConstraint
 
-public enum ALActivation {
-    case active, inactive
+public enum ALActivation: Int {
+    case active = 1
+    case inactive = 0
 }
 
 public enum ALConstraintRelation: Int {

@@ -18,24 +18,26 @@
 
 ***
 
-# Introduction
+# Introduction/介绍
 
-## What's this?
+## What's this?/这是什么？
 
 `Lollipop` is a syntactic sugar for `Auto Layout`.
+
+`Lollipop` 是一块 `Auto Layout` 的语法糖。
 
 <p align="center">
   <img src="./Assets/Sample-Lollipop.gif" alt="Sample-Lollipop">
 </p>
 
-## Requirements
+## Requirements/要求
 
 * iOS 9.0+
 * macOS 10.11+
 * tvOS 9.0+
 * Xcode 8+ with Swift 3+
 
-## Installation
+## Installation/安装
 
 #### CocoaPods
 
@@ -43,15 +45,15 @@
 pod 'Lollipop'
 ```
 
-## Contribution
+## Contribution/贡献
 
 You are welcome to fork and submit pull requests.
 
-## License
+## License/许可
 
 `Lollipop` is open-sourced software, licensed under the `MIT` license.
 
-## Abstraction
+## Abstraction/抽象
 
 ```swift
 // AL == Auto Layout
@@ -105,7 +107,7 @@ public enum ALConstraintPriority: ALLayoutPriority {
 }
 ```
 
-## Usage
+## Usage/用法
 
 * Center
 
@@ -268,7 +270,7 @@ public func bottom(_ relation: ALConstraintRelation,
                    isActive: ALActivation = .active) -> ALConstraint
 ```
 
-## Samples
+## Samples/示例
 
 ```swift
 import Foundation

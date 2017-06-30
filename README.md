@@ -2,7 +2,7 @@
 <p align="center">
   <img src="./Lollipop.png" alt="Lollipop">
   <br/><a href="https://cocoapods.org/pods/Lollipop">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg">
+  <img alt="Version" src="https://img.shields.io/badge/version-2.0.0-brightgreen.svg">
   <img alt="Author" src="https://img.shields.io/badge/author-Meniny-blue.svg">
   <img alt="Build Passing" src="https://img.shields.io/badge/build-passing-brightgreen.svg">
   <img alt="Swift" src="https://img.shields.io/badge/swift-3.0%2B-orange.svg">
@@ -53,221 +53,52 @@ You are welcome to fork and submit pull requests.
 
 `Lollipop` is open-sourced software, licensed under the `MIT` license.
 
-## Abstraction/抽象
+## API
 
 ```swift
-// AL == Auto Layout
+center(in:offset:priority:active:)
 
-#if os(OSX)
-    public typealias ALView = NSView
-    public typealias ALLayoutGuide = NSLayoutGuide
-    public typealias ALConstraintAxis = NSLayoutConstraintOrientation
-    public typealias ALLayoutPriority = NSLayoutPriority
-    public typealias ALEdgeInsets = EdgeInsets
-#else
-    public typealias ALView = UIView
-    public typealias ALLayoutGuide = UILayoutGuide
-    public typealias ALConstraintAxis = UILayoutConstraintAxis
-    public typealias ALLayoutPriority = UILayoutPriority
-    public typealias ALEdgeInsets = UIEdgeInsets
-#endif
+centerX(equalTo:offset:priority:active:)
+centerX(equalTo:offset:priority:active:)
 
-public typealias ALFloat = CGFloat
-public typealias ALRange = (min: ALFloat?, max: ALFloat?)
-public typealias ALOffset = (x: ALFloat, y: ALFloat)
-public typealias ALPoint = CGPoint
-public typealias ALVector = CGVector
-public typealias ALSize = CGSize
+centerY(equalTo:offset:priority:active:)
+centerY(equalTo:offset:priority:active:)
 
-public typealias ALXAxisAnchor = NSLayoutXAxisAnchor
-public typealias ALYAxisAnchor = NSLayoutYAxisAnchor
+edges(equalTo:insets:priority:active:)
+edges(top:leading:bottom:trailing:insets:priority:active:)
 
-public typealias ALConstraint = NSLayoutConstraint
+size(equalTo:priority:active:)
+size(equalTo:by:priority:active:)
 
-public enum ALActivation: Int {
-    case active = 1
-    case inactive = 0
-}
+origin(equalTo:offset:priority:active:)
 
-public enum ALConstraintRelation: Int {
-    case equalTo = 0
-    case equalOrLessThan = -1
-    case equalOrGreaterThan = 1
-}
+width(_:to:priority:active:)
+width(_:to:multiplier:offset:priority:active:)
+width(_:to:multiplier:offset:priority:active:)
+width(from:to:priority:active:)
 
-public enum ALConstraintPriority: ALLayoutPriority {
-    case `default` = 1000
-    case high = 750
-    case low = 250
-    case fittingSize = 50
+height(_:to:priority:active:)
+height(_:to:multiplier:offset:priority:active:)
+height(_:to:multiplier:offset:priority:active:)
+height(from:to:priority:active:)
 
-    public var value: ALLayoutPriority {
-        return rawValue
-    }
-}
-```
+leading(_:to:offset:priority:active:)
+leading(_:to:offset:priority:active:)
 
-## Usage/用法
+left(_:to:offset:priority:active:)
+left(_:to:offset:priority:active:)
 
-* Center
+trailing(_:to:offset:priority:active:)
+trailing(_:to:offset:priority:active:)
 
-```swift
-@discardableResult
-public func center(in view: Lollipop,
-                   offset: ALPoint = .zero,
-                   priority: ALConstraintPriority = .default,
-                   isActive: ALActivation = .active) -> [ALConstraint]
+right(_:to:offset:priority:active:)
+right(_:to:offset:priority:active:)
 
-@discardableResult
-public func centerX(equalTo view: Lollipop,
-                    anchor: ALXAxisAnchor? = nil,
-                    offset: ALFloat = 0,
-                    priority: ALConstraintPriority = .default,
-                    isActive: ALActivation = .active) -> ALConstraint
+top(_:to:offset:priority:active:)
+top(_:to:offset:priority:active:)
 
-@discardableResult
-public func centerY(equalTo view: Lollipop,
-                    anchor: ALYAxisAnchor? = nil,
-                    offset: ALFloat = 0,
-                    priority: ALConstraintPriority = .default,
-                    isActive: ALActivation = .active) -> ALConstraint
-```
-
-* Edges
-
-```swift
-@discardableResult
-public func edges(equalTo view: Lollipop,
-                  insets: ALEdgeInsets = .zero,
-                  priority: ALConstraintPriority = .default,
-                  isActive: ALActivation = .active) -> [ALConstraint]
-```
-
-* Size/Origin
-
-```swift
-@discardableResult
-public func size(equalTo size: ALSize,
-                 priority: ALConstraintPriority = .default,
-                 isActive: ALActivation = .active) -> [ALConstraint]
-
-@discardableResult
-public func origin(equalTo view: Lollipop,
-                   insets: ALVector = .zero,
-                   priority: ALConstraintPriority = .default,
-                   isActive: ALActivation = .active) -> [ALConstraint]
-```
-
-* Width
-
-```swift
-@discardableResult
-public func width(_ relation: ALConstraintRelation,
-                  _ width: ALFloat,
-                  priority: ALConstraintPriority = .default,
-                  isActive: ALActivation = .active) -> ALConstraint
-
-@discardableResult
-public func width(_ relation: ALConstraintRelation,
-                  _ view: Lollipop,
-                  dimension: NSLayoutDimension? = nil,
-                  multiplier: ALFloat = 1,
-                  offset: ALFloat = 0,
-                  priority: ALConstraintPriority = .default,
-                  isActive: ALActivation = .active) -> ALConstraint
-
-@discardableResult
-public func width(between range: ALRange? = nil,
-                  priority: ALConstraintPriority = .default,
-                  isActive: ALActivation = .active) -> [ALConstraint]
-```
-
-* Height
-
-```swift
-@discardableResult
-public func height(_ relation: ALConstraintRelation,
-                   _ height: ALFloat,
-                   priority: ALConstraintPriority = .default,
-                   isActive: ALActivation = .active) -> ALConstraint
-
-@discardableResult
-public func height(_ relation: ALConstraintRelation,
-                   _ view: Lollipop,
-                   dimension: NSLayoutDimension? = nil,
-                   multiplier: ALFloat = 1,
-                   offset: ALFloat = 0,
-                   priority: ALConstraintPriority = .default,
-                   isActive: ALActivation = .active) -> ALConstraint
-
-@discardableResult
-public func height(between range: ALRange? = nil,
-                   priority: ALConstraintPriority = .default,
-                   isActive: ALActivation = .active) -> [ALConstraint]
-```
-
-* Leading/Left
-
-```swift
-@discardableResult
-public func leading(_ relation: ALConstraintRelation,
-                    _ view: Lollipop,
-                    anchor: ALXAxisAnchor? = nil,
-                    offset: ALFloat = 0,
-                    priority: ALConstraintPriority = .default,
-                    isActive: ALActivation = .active) -> ALConstraint
-
-@discardableResult
-public func left(_ relation: ALConstraintRelation,
-                 _ view: Lollipop,
-                 anchor: ALXAxisAnchor? = nil,
-                 offset: ALFloat = 0,
-                 priority: ALConstraintPriority = .default,
-                 isActive: ALActivation = .active) -> ALConstraint
-```
-
-* Trailing/Right
-
-```swift
-@discardableResult
-public func trailing(_ relation: ALConstraintRelation = .equalTo,
-                     _ view: Lollipop,
-                     anchor: ALXAxisAnchor? = nil,
-                     offset: ALFloat = 0,
-                     priority: ALConstraintPriority = .default,
-                     isActive: ALActivation = .active) -> ALConstraint
-
-@discardableResult
-public func right(_ relation: ALConstraintRelation,
-                  _ view: Lollipop,
-                  anchor: ALXAxisAnchor? = nil,
-                  offset: ALFloat = 0,
-                  priority: ALConstraintPriority = .default,
-                  isActive: ALActivation = .active) -> ALConstraint
-```
-
-* Top
-
-```swift
-@discardableResult
-public func top(_ relation: ALConstraintRelation,
-                _ view: Lollipop,
-                anchor: ALYAxisAnchor? = nil,
-                offset: ALFloat = 0,
-                priority: ALConstraintPriority = .default,
-                isActive: ALActivation = .active) -> ALConstraint
-```
-
-* Bottom
-
-```swift
-@discardableResult
-public func bottom(_ relation: ALConstraintRelation,
-                   _ view: Lollipop,
-                   anchor: ALYAxisAnchor? = nil,
-                   offset: ALFloat = 0,
-                   priority: ALConstraintPriority = .default,
-                   isActive: ALActivation = .active) -> ALConstraint
+bottom(_:to:offset:priority:active:)
+bottom(_:to:offset:priority:active:)
 ```
 
 ## Samples/示例
@@ -287,22 +118,18 @@ import Foundation
 #endif
 import Lollipop
 
-public func addItems(to view: ALView) {
-    let max = 10
-    for i in 1...max {
-        let value: ALFloat = 1 - ALFloat(i) / ALFloat(max)
-        let color = Color(red: value, green: value, blue: value, alpha: 1.0)
-        let item = ALView()
-        #if os(OSX)
-            item.wantsLayer = true
-            item.layer?.backgroundColor = color.cgColor
-        #else
-            item.backgroundColor = color
-        #endif
-        view.addSubview(item)
-        item.width(.equalTo, view, dimension: nil, multiplier: value, offset: 0, priority: .default, isActive: .active)
-        item.height(.equalTo, item, dimension: item.widthAnchor, multiplier: 1, offset: 0, priority: .default, isActive: .active)
-        item.center(in: view)
+public extension Controller {
+    public func addItems(to v: ALView) {
+        let max = 10
+        for i in 1...max {
+            let value: CGFloat = 1 - CGFloat(i) / CGFloat(max)
+            let item = ALView()
+            item.setColor(Color(red: value, green: value, blue: value, alpha: 1.0))
+            v.addSubview(item)
+            item.width(.equal, to: v, multiplier: value)
+            item.height(.equal, to: item.widthAnchor)
+            item.center(in: v)
+        }
     }
 }
 

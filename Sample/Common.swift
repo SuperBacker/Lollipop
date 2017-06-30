@@ -21,24 +21,24 @@ import Foundation
 import Lollipop
 
 public extension Controller {
-    public func addItems(to view: ALView) {
+    public func addItems(to v: ALView) {
         let max = 10
         for i in 1...max {
-            let value: ALFloat = 1 - ALFloat(i) / ALFloat(max)
+            let value: CGFloat = 1 - CGFloat(i) / CGFloat(max)
             let item = ALView()
             item.setColor(Color(red: value, green: value, blue: value, alpha: 1.0))
-            view.addSubview(item)
-            item.width(.equalTo, view, dimension: nil, multiplier: value, offset: 0, priority: .default, isActive: .active)
-            item.height(.equalTo, item, dimension: item.widthAnchor, multiplier: 1, offset: 0, priority: .default, isActive: .active)
-            item.center(in: view)
+            v.addSubview(item)
+            item.width(.equal, to: v, multiplier: value)
+            item.height(.equal, to: item.widthAnchor)
+            item.center(in: v)
         }
     }
     #if os(macOS)
     #else
     public func addStack(_ stack: Stack, to view: ALView) {
         view.addSubview(stack)
-        stack.width(.equalTo, view)
-        stack.height(.equalTo, view)
+        stack.width(.equal, to: view)
+        stack.height(.equal, to: view)
         stack.center(in: view)
     }
     #endif
@@ -60,7 +60,7 @@ public extension ALView {
 public class Stack: ALView {
     var lastBottomConstraint: ALConstraint?
     var lastSubview: ALView?
-    let margin: ALFloat = 20
+    let margin: CGFloat = 20
     var counter = 0
     var heights: [ALConstraint] = []
     var container = ALView()
@@ -68,9 +68,9 @@ public class Stack: ALView {
     convenience init() {
         self.init(frame: .zero)
         addSubview(container)
-        container.width(.equalTo, self)
-        container.height(between: (200, nil), priority: .default, isActive: .active)
-        container.height(.equalTo, 200, priority: .low)
+        container.width(.equal, to: self.widthAnchor)
+        container.height(from: 200, to: nil)
+        container.height(.equal, to: 200, priority: .low)
         container.center(in: self)
     }
     
@@ -83,17 +83,17 @@ public class Stack: ALView {
         sub.setCompressionResistance(priority: .high, for: .vertical)
         container.addSubview(sub)
         
-        sub.top(.equalTo, lastSubview ?? container, anchor: lastSubview?.bottomAnchor ?? container.topAnchor, offset: margin)
-        sub.left(.equalTo, container, offset: margin)
-        sub.right(.equalTo, container, offset: -margin)
+        sub.top(.equal, to: lastSubview?.bottomAnchor ?? container.topAnchor, offset: margin)
+        sub.left(.equal, to: container, offset: margin)
+        sub.right(.equal, to: container, offset: -margin)
         
         layoutIfNeeded()
         
-        heights.append(sub.height(.equalTo, lastSubview ?? container, priority: .low))
-        heights.append(contentsOf: sub.height(between: (100, 200), priority: .high))
+        heights.append(sub.height(.equal, to: lastSubview ?? container, priority: .low))
+        heights.append(contentsOf: sub.height(from: 100, to: 200, priority: .high))
         
         lastBottomConstraint?.isActive = false
-        lastBottomConstraint = sub.bottom(.lessThanOrEqualTo, container, offset: -margin)
+        lastBottomConstraint = sub.bottom(.lessThanOrEqual, to: container, offset: -margin)
         lastSubview = sub
         counter += 1
     }

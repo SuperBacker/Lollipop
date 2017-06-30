@@ -23,7 +23,6 @@
 		5CD75D6B1F05289600A11DFA /* Lollipop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD75D6A1F05289600A11DFA /* Lollipop.framework */; };
 		5CD75D6D1F0528A500A11DFA /* Lollipop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD75D6C1F0528A500A11DFA /* Lollipop.framework */; };
 		5CD75D6F1F05309900A11DFA /* AnimatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD75D6E1F05309900A11DFA /* AnimatorViewController.swift */; };
-		5CD75D931F05473100A11DFA /* CocoaAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD75D921F05473100A11DFA /* CocoaAnimator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CD75D931F05473100A11DFA /* CocoaAnimator.framework in Frameworks */,
 				5CD75D6B1F05289600A11DFA /* Lollipop.framework in Frameworks */,
 				3DE66EA84037117D0659415C /* Pods_macOS.framework in Frameworks */,
 			);

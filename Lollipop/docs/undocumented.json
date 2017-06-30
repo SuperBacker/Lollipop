@@ -1,0 +1,621 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "ALEdgeInsets",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "ALLayoutGuide",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "ALView",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "ALView",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "ALView",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": null,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 45,
+      "symbol": "CGPointAxis",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 46,
+      "symbol": "CGPointAxis.x",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 46,
+      "symbol": "CGPointAxis.y",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 49,
+      "symbol": "ALActivation",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 50,
+      "symbol": "ALActivation.active",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 51,
+      "symbol": "ALActivation.inactive",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 54,
+      "symbol": "ALLayoutPriority",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 55,
+      "symbol": "ALLayoutPriority.default",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 56,
+      "symbol": "ALLayoutPriority.high",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 57,
+      "symbol": "ALLayoutPriority.low",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 58,
+      "symbol": "ALLayoutPriority.fittingSize",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 68,
+      "symbol": "ALEdgeInsets.init(_:_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 74,
+      "symbol": "CGFloat.zero",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 93,
+      "symbol": "Collection.activate()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 101,
+      "symbol": "Collection.deactivate()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 121,
+      "symbol": "Lollipop",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 122,
+      "symbol": "Lollipop.topAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 123,
+      "symbol": "Lollipop.bottomAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 125,
+      "symbol": "Lollipop.leftAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 126,
+      "symbol": "Lollipop.leadingAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 128,
+      "symbol": "Lollipop.rightAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 129,
+      "symbol": "Lollipop.trailingAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 131,
+      "symbol": "Lollipop.centerXAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 132,
+      "symbol": "Lollipop.centerYAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 134,
+      "symbol": "Lollipop.widthAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 135,
+      "symbol": "Lollipop.heightAnchor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 137,
+      "symbol": "Lollipop.prepareForLayoutIfNeeded()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 141,
+      "symbol": "ALView.prepareForLayoutIfNeeded()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 147,
+      "symbol": "ALLayoutGuide.prepareForLayoutIfNeeded()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 155,
+      "symbol": "Lollipop.center(in:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 174,
+      "symbol": "Lollipop.centerX(equalTo:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 182,
+      "symbol": "Lollipop.centerX(equalTo:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 192,
+      "symbol": "Lollipop.centerY(equalTo:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 200,
+      "symbol": "Lollipop.centerY(equalTo:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 213,
+      "symbol": "Lollipop.edges(equalTo:insets:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 227,
+      "symbol": "Lollipop.edges(top:leading:bottom:trailing:insets:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 254,
+      "symbol": "Lollipop.size(equalTo:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 261,
+      "symbol": "Lollipop.size(equalTo:by:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 279,
+      "symbol": "Lollipop.origin(equalTo:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 301,
+      "symbol": "Lollipop.width(_:to:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 315,
+      "symbol": "Lollipop.width(_:to:multiplier:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 325,
+      "symbol": "Lollipop.width(_:to:multiplier:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 341,
+      "symbol": "Lollipop.width(from:to:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 368,
+      "symbol": "Lollipop.height(_:to:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 382,
+      "symbol": "Lollipop.height(_:to:multiplier:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 392,
+      "symbol": "Lollipop.height(_:to:multiplier:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 408,
+      "symbol": "Lollipop.height(from:to:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 435,
+      "symbol": "Lollipop.leading(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 444,
+      "symbol": "Lollipop.leading(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 459,
+      "symbol": "Lollipop.left(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 468,
+      "symbol": "Lollipop.left(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 486,
+      "symbol": "Lollipop.trailing(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 494,
+      "symbol": "Lollipop.trailing(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 509,
+      "symbol": "Lollipop.right(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 518,
+      "symbol": "Lollipop.right(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 536,
+      "symbol": "Lollipop.top(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 545,
+      "symbol": "Lollipop.top(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 563,
+      "symbol": "Lollipop.bottom(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 572,
+      "symbol": "Lollipop.bottom(_:to:offset:priority:active:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 590,
+      "symbol": "~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 591,
+      "symbol": "~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 592,
+      "symbol": "~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 593,
+      "symbol": "~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 597,
+      "symbol": ">~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 598,
+      "symbol": ">=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 599,
+      "symbol": ">~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 600,
+      "symbol": ">~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 604,
+      "symbol": "<~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 605,
+      "symbol": "<~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 606,
+      "symbol": "<~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 607,
+      "symbol": "<~(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 611,
+      "symbol": "ALView.setHugging(priority:for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 615,
+      "symbol": "ALView.setCompressionResistance(priority:for:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop/Source/Lollipop.swift",
+      "line": 623,
+      "symbol": "ALView.stack(_:axis:width:height:spacing:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Meniny/MXDevelop/MXProjects/Lollipop/Lollipop"
+}

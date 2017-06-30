@@ -20,48 +20,42 @@ import Foundation
     public typealias ALView = NSView
     public typealias ALLayoutGuide = NSLayoutGuide
     public typealias ALConstraintAxis = NSLayoutConstraintOrientation
-    public typealias ALLayoutPriority = NSLayoutPriority
+    public typealias ALPriorityValue = NSLayoutPriority
     public typealias ALEdgeInsets = EdgeInsets
 #else
     public typealias ALView = UIView
     public typealias ALLayoutGuide = UILayoutGuide
     public typealias ALConstraintAxis = UILayoutConstraintAxis
-    public typealias ALLayoutPriority = UILayoutPriority
+    public typealias ALPriorityValue = UILayoutPriority
     public typealias ALEdgeInsets = UIEdgeInsets
 #endif
 
-public typealias ALFloat = CGFloat
-public typealias ALRange = (min: ALFloat?, max: ALFloat?)
-public typealias ALOffset = (x: ALFloat, y: ALFloat)
-public typealias ALPoint = CGPoint
-public typealias ALVector = CGVector
-public typealias ALSize = CGSize
+//public typealias ALFloat = CGFloat
+public typealias ALRange = (min: CGFloat?, max: CGFloat?)
+//public typealias ALOffset = (x: CGFloat, y: CGFloat)
+//public typealias ALPoint = CGPoint
+//public typealias ALVector = CGVector
+//public typealias ALSize = CGSize
 
 public typealias ALXAxisAnchor = NSLayoutXAxisAnchor
 public typealias ALYAxisAnchor = NSLayoutYAxisAnchor
 
 public typealias ALConstraint = NSLayoutConstraint
 
+public enum CGPointAxis {
+    case x, y
+}
+
 public enum ALActivation: Int {
     case active = 1
     case inactive = 0
 }
 
-public enum ALConstraintRelation: Int {
-    case equalTo = 0
-    case lessThanOrEqualTo = -1
-    case greaterThanOrEqualTo = 1
-}
-
-public enum ALConstraintPriority: ALLayoutPriority {
+public enum ALLayoutPriority: ALPriorityValue {
     case `default` = 1000
     case high = 750
     case low = 250
     case fittingSize = 50
-    
-    public var value: ALLayoutPriority {
-        return rawValue
-    }
 }
 
 #if os(OSX)
@@ -70,32 +64,56 @@ public enum ALConstraintPriority: ALLayoutPriority {
     }
 #endif
 
+public extension ALEdgeInsets {
+    public init(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) {
+        self.init(top: top, left: left, bottom: bottom, right: right)
+    }
+}
+
+public extension CGFloat {
+    public static var zero: CGFloat = 0
+}
+
+fileprivate extension ALConstraint {
+    @discardableResult
+    fileprivate func priority(_ p: ALLayoutPriority = .default) -> Self {
+        priority = p.rawValue
+        return self
+    }
+    
+    @discardableResult
+    fileprivate func active(_ a: Bool = true) -> Self {
+        isActive = a
+        return self
+    }
+}
+
 public extension Collection where Iterator.Element == ALConstraint {
-    public func activate() {
+    @discardableResult
+    public func activate() -> Self {
         if let constraints = self as? [ALConstraint] {
             ALConstraint.activate(constraints)
         }
+        return self
     }
     
-    public func deactivate() {
+    @discardableResult
+    public func deactivate() -> Self {
         if let constraints = self as? [ALConstraint] {
             ALConstraint.deactivate(constraints)
         }
-    }
-}
-
-public extension ALConstraint {
-    public func with(priority p: ALConstraintPriority) -> Self {
-        priority = p.value
         return self
     }
-}
-
-public extension ALConstraint {
-    public func set(active: ALActivation) -> Self {
-        isActive = (active == .active)
-        return self
-    }
+    
+//    @discardableResult
+//    public func priority(_ p: ALLayoutPriority = .default) -> Self {
+//        if let constraints = self as? [ALConstraint] {
+//            for c in constraints {
+//                c.priority = p.rawValue
+//            }
+//        }
+//        return self
+//    }
 }
 
 // MARK: - Lollipop
@@ -135,17 +153,17 @@ extension ALLayoutGuide: Lollipop {
 public extension Lollipop {
     @discardableResult
     public func center(in view: Lollipop,
-                       offset: ALPoint = .zero,
-                       priority: ALConstraintPriority = .default,
-                       isActive: ALActivation = .active) -> [ALConstraint] {
+                       offset: CGPoint = .zero,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> [ALConstraint] {
         prepareForLayoutIfNeeded()
         
         let constraints = [
-            centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset.x).with(priority: priority),
-            centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset.y).with(priority: priority)
+            centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset.x).priority(priority),
+            centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset.y).priority(priority)
         ]
         
-        if isActive == .active {
+        if active {
             ALConstraint.activate(constraints)
         }
         
@@ -154,26 +172,38 @@ public extension Lollipop {
     
     @discardableResult
     public func centerX(equalTo view: Lollipop,
-                        anchor: ALXAxisAnchor? = nil,
-                        offset: ALFloat = 0,
-                        priority: ALConstraintPriority = .default,
-                        isActive: ALActivation = .active) -> ALConstraint {
+                        offset: CGFloat = 0,
+                        priority: ALLayoutPriority = .default,
+                        active: Bool = true) -> ALConstraint {
+        return centerX(equalTo: view.centerXAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func centerX(equalTo anchor: ALXAxisAnchor,
+                        offset: CGFloat = 0,
+                        priority: ALLayoutPriority = .default,
+                        active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
-        let constraint = centerXAnchor.constraint(equalTo: anchor ?? view.centerXAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        return constraint
+        return centerXAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
     }
     
     @discardableResult
     public func centerY(equalTo view: Lollipop,
-                        anchor: ALYAxisAnchor? = nil,
-                        offset: ALFloat = 0,
-                        priority: ALConstraintPriority = .default,
-                        isActive: ALActivation = .active) -> ALConstraint {
+                        offset: CGFloat = 0,
+                        priority: ALLayoutPriority = .default,
+                        active: Bool = true) -> ALConstraint {
+        return centerY(equalTo: view.centerYAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func centerY(equalTo anchor: ALYAxisAnchor,
+                        offset: CGFloat = 0,
+                        priority: ALLayoutPriority = .default,
+                        active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
-        let constraint = centerYAnchor.constraint(equalTo: anchor ?? view.centerYAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        return constraint
+        return centerYAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
     }
 }
 
@@ -182,18 +212,35 @@ public extension Lollipop {
     @discardableResult
     public func edges(equalTo view: Lollipop,
                       insets: ALEdgeInsets = .zero,
-                      priority: ALConstraintPriority = .default,
-                      isActive: ALActivation = .active) -> [ALConstraint] {
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> [ALConstraint] {
+        return edges(top: view.topAnchor,
+                     leading: view.leadingAnchor,
+                     bottom: view.bottomAnchor,
+                     trailing: view.trailingAnchor,
+                     insets: insets,
+                     priority: priority,
+                     active: active)
+    }
+    
+    @discardableResult
+    public func edges(top: ALYAxisAnchor,
+                      leading: ALXAxisAnchor,
+                      bottom: ALYAxisAnchor,
+                      trailing: ALXAxisAnchor,
+                      insets: ALEdgeInsets = .zero,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> [ALConstraint] {
         prepareForLayoutIfNeeded()
         
         let constraints = [
-            topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top).with(priority: priority),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left).with(priority: priority),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: insets.bottom).with(priority: priority),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: insets.right).with(priority: priority)
+            topAnchor.constraint(equalTo: top, constant: insets.top).priority(priority),
+            leadingAnchor.constraint(equalTo: leading, constant: insets.left).priority(priority),
+            bottomAnchor.constraint(equalTo: bottom, constant: insets.bottom).priority(priority),
+            trailingAnchor.constraint(equalTo: trailing, constant: insets.right).priority(priority)
         ]
         
-        if isActive == .active {
+        if active {
             ALConstraint.activate(constraints)
         }
         
@@ -204,17 +251,24 @@ public extension Lollipop {
 // MARK: - Size/Origin
 public extension Lollipop {
     @discardableResult
-    public func size(equalTo size: ALSize,
-                     priority: ALConstraintPriority = .default,
-                     isActive: ALActivation = .active) -> [ALConstraint] {
+    public func size(equalTo s: CGSize,
+                     priority: ALLayoutPriority = .default,
+                     active: Bool = true) -> [ALConstraint] {
+        return size(equalTo: s.width, by: s.height, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func size(equalTo width: CGFloat, by height: CGFloat,
+                     priority: ALLayoutPriority = .default,
+                     active: Bool = true) -> [ALConstraint] {
         prepareForLayoutIfNeeded()
         
         let constraints = [
-            widthAnchor.constraint(equalToConstant: size.width).with(priority: priority),
-            heightAnchor.constraint(equalToConstant: size.height).with(priority: priority)
+            widthAnchor.constraint(equalToConstant: width).priority(priority),
+            heightAnchor.constraint(equalToConstant: height).priority(priority)
         ]
         
-        if isActive == .active {
+        if active {
             ALConstraint.activate(constraints)
         }
         
@@ -223,17 +277,17 @@ public extension Lollipop {
     
     @discardableResult
     public func origin(equalTo view: Lollipop,
-                       insets: ALVector = .zero,
-                       priority: ALConstraintPriority = .default,
-                       isActive: ALActivation = .active) -> [ALConstraint] {
+                       offset: CGVector = .zero,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> [ALConstraint] {
         prepareForLayoutIfNeeded()
         
         let constraints = [
-            leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.dx).with(priority: priority),
-            topAnchor.constraint(equalTo: view.topAnchor, constant: insets.dy).with(priority: priority)
+            leftAnchor.constraint(equalTo: view.leftAnchor, constant: offset.dx).priority(priority),
+            topAnchor.constraint(equalTo: view.topAnchor, constant: offset.dy).priority(priority)
         ]
         
-        if isActive == .active {
+        if active {
             ALConstraint.activate(constraints)
         }
         
@@ -244,52 +298,64 @@ public extension Lollipop {
 // MARK: - Width
 public extension Lollipop {
     @discardableResult
-    public func width(_ relation: ALConstraintRelation,
-                      _ width: ALFloat,
-                      priority: ALConstraintPriority = .default,
-                      isActive: ALActivation = .active) -> ALConstraint {
+    public func width(_ relation: NSLayoutRelation,
+                      to constant: CGFloat,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return widthAnchor.constraint(equalToConstant: width).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return widthAnchor.constraint(lessThanOrEqualToConstant: width).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return widthAnchor.constraint(greaterThanOrEqualToConstant: width).with(priority: priority).set(active: isActive)
-        }
-    }
-
-    @discardableResult
-    public func width(_ relation: ALConstraintRelation,
-                      _ view: Lollipop,
-                      dimension: NSLayoutDimension? = nil,
-                      multiplier: ALFloat = 1,
-                      offset: ALFloat = 0,
-                      priority: ALConstraintPriority = .default,
-                      isActive: ALActivation = .active) -> ALConstraint {
-        prepareForLayoutIfNeeded()
-        
-        switch relation {
-        case .equalTo: return widthAnchor.constraint(equalTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return widthAnchor.constraint(lessThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return widthAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return widthAnchor.constraint(equalToConstant: constant).priority(priority).active(active)
+        case .lessThanOrEqual: return widthAnchor.constraint(lessThanOrEqualToConstant: constant).priority(priority).active(active)
+        case .greaterThanOrEqual: return widthAnchor.constraint(greaterThanOrEqualToConstant: constant).priority(priority).active(active)
         }
     }
     
     @discardableResult
-    public func width(between range: ALRange? = nil,
-                      priority: ALConstraintPriority = .default,
-                      isActive: ALActivation = .active) -> [ALConstraint] {
+    public func width(_ relation: NSLayoutRelation,
+                      to view: Lollipop,
+                      multiplier: CGFloat = 1,
+                      offset: CGFloat = 0,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> ALConstraint {
+        return width(relation, to: view.widthAnchor, multiplier: multiplier, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func width(_ relation: NSLayoutRelation,
+                      to dimension: NSLayoutDimension,
+                      multiplier: CGFloat = 1,
+                      offset: CGFloat = 0,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
-        var constraints: [ALConstraint] = []
+        switch relation {
+        case .equal: return widthAnchor.constraint(equalTo: dimension, multiplier: multiplier, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return widthAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: multiplier, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return widthAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: multiplier, constant: offset).priority(priority).active(active)
+        }
+    }
+    
+    @discardableResult
+    public func width(from min: CGFloat?,
+                      to max: CGFloat?,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> [ALConstraint] {
+        prepareForLayoutIfNeeded()
+
+        var constraints = [ALConstraint]()
         
-        if let min = range?.min {
-            let constraint = widthAnchor.constraint(greaterThanOrEqualToConstant: min).with(priority: priority).set(active: isActive)
-            constraints.append(constraint)
+        if let min = min {
+            constraints.append(widthAnchor.constraint(greaterThanOrEqualToConstant: min).priority(priority))
         }
         
-        if let max = range?.max {
-            let constraint = widthAnchor.constraint(lessThanOrEqualToConstant: max).with(priority: priority).set(active: isActive)
-            constraints.append(constraint)
+        if let max = max {
+            constraints.append(widthAnchor.constraint(lessThanOrEqualToConstant: max).priority(priority))
+        }
+        
+        if active {
+            ALConstraint.activate(constraints)
         }
         
         return constraints
@@ -299,52 +365,64 @@ public extension Lollipop {
 // MARK: - Height
 public extension Lollipop {
     @discardableResult
-    public func height(_ relation: ALConstraintRelation,
-                       _ height: ALFloat,
-                       priority: ALConstraintPriority = .default,
-                       isActive: ALActivation = .active) -> ALConstraint {
+    public func height(_ relation: NSLayoutRelation,
+                       to constant: CGFloat,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return heightAnchor.constraint(equalToConstant: height).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return heightAnchor.constraint(lessThanOrEqualToConstant: height).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return heightAnchor.constraint(greaterThanOrEqualToConstant: height).with(priority: priority).set(active: isActive)
+        case .equal: return heightAnchor.constraint(equalToConstant: constant).priority(priority).active(active)
+        case .lessThanOrEqual: return heightAnchor.constraint(lessThanOrEqualToConstant: constant).priority(priority).active(active)
+        case .greaterThanOrEqual: return heightAnchor.constraint(greaterThanOrEqualToConstant: constant).priority(priority).active(active)
         }
     }
     
     @discardableResult
-    public func height(_ relation: ALConstraintRelation,
-                       _ view: Lollipop,
-                       dimension: NSLayoutDimension? = nil,
-                       multiplier: ALFloat = 1,
-                       offset: ALFloat = 0,
-                       priority: ALConstraintPriority = .default,
-                       isActive: ALActivation = .active) -> ALConstraint {
+    public func height(_ relation: NSLayoutRelation,
+                       to view: Lollipop,
+                       multiplier: CGFloat = 1,
+                       offset: CGFloat = 0,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> ALConstraint {
+        return height(relation, to: view.heightAnchor, multiplier: multiplier, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func height(_ relation: NSLayoutRelation,
+                       to dimension: NSLayoutDimension,
+                       multiplier: CGFloat = 1,
+                       offset: CGFloat = 0,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return heightAnchor.constraint(equalTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return heightAnchor.constraint(lessThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return heightAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return heightAnchor.constraint(equalTo: dimension, multiplier: multiplier, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return heightAnchor.constraint(lessThanOrEqualTo: dimension, multiplier: multiplier, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return heightAnchor.constraint(greaterThanOrEqualTo: dimension, multiplier: multiplier, constant: offset).priority(priority).active(active)
         }
     }
     
     @discardableResult
-    public func height(between range: ALRange? = nil,
-                       priority: ALConstraintPriority = .default,
-                       isActive: ALActivation = .active) -> [ALConstraint] {
+    public func height(from min: CGFloat?,
+                       to max: CGFloat?,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> [ALConstraint] {
         prepareForLayoutIfNeeded()
         
-        var constraints: [ALConstraint] = []
+        var constraints = [ALConstraint]()
         
-        if let min = range?.min {
-            let constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: min).with(priority: priority).set(active: isActive)
-            constraints.append(constraint)
+        if let min = min {
+            constraints.append(heightAnchor.constraint(greaterThanOrEqualToConstant: min).priority(priority))
         }
         
-        if let max = range?.max {
-            let constraint = heightAnchor.constraint(lessThanOrEqualToConstant: max).with(priority: priority).set(active: isActive)
-            constraints.append(constraint)
+        if let max = max {
+            constraints.append(heightAnchor.constraint(lessThanOrEqualToConstant: max).priority(priority))
+        }
+        
+        if active {
+            ALConstraint.activate(constraints)
         }
         
         return constraints
@@ -354,34 +432,50 @@ public extension Lollipop {
 // MARK: - Left/Leading
 public extension Lollipop {
     @discardableResult
-    public func leading(_ relation: ALConstraintRelation,
-                        _ view: Lollipop,
-                        anchor: ALXAxisAnchor? = nil,
-                        offset: ALFloat = 0,
-                        priority: ALConstraintPriority = .default,
-                        isActive: ALActivation = .active) -> ALConstraint {
+    public func leading(_ relation: NSLayoutRelation,
+                        to view: Lollipop,
+                        offset: CGFloat = 0,
+                        priority: ALLayoutPriority = .default,
+                        active: Bool = true) -> ALConstraint {
+        return leading(relation, to: view.leadingAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func leading(_ relation: NSLayoutRelation,
+                        to anchor: ALXAxisAnchor,
+                        offset: CGFloat = 0,
+                        priority: ALLayoutPriority = .default,
+                        active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return leadingAnchor.constraint(equalTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return leadingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return leadingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return leadingAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return leadingAnchor.constraint(lessThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return leadingAnchor.constraint(greaterThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
         }
     }
     
     @discardableResult
-    public func left(_ relation: ALConstraintRelation,
-                     _ view: Lollipop,
-                     anchor: ALXAxisAnchor? = nil,
-                     offset: ALFloat = 0,
-                     priority: ALConstraintPriority = .default,
-                     isActive: ALActivation = .active) -> ALConstraint {
+    public func left(_ relation: NSLayoutRelation,
+                     to view: ALView,
+                     offset: CGFloat = 0,
+                     priority: ALLayoutPriority = .default,
+                     active: Bool = true) -> ALConstraint {
+        return left(relation, to: view.leftAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func left(_ relation: NSLayoutRelation,
+                     to anchor: ALXAxisAnchor,
+                     offset: CGFloat = 0,
+                     priority: ALLayoutPriority = .default,
+                     active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return leftAnchor.constraint(equalTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return leftAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return leftAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return leftAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return leftAnchor.constraint(lessThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return leftAnchor.constraint(greaterThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
         }
     }
 }
@@ -389,34 +483,49 @@ public extension Lollipop {
 // MARK: - Right/Trailing
 public extension Lollipop {
     @discardableResult
-    public func trailing(_ relation: ALConstraintRelation = .equalTo,
-                         _ view: Lollipop,
-                         anchor: ALXAxisAnchor? = nil,
-                         offset: ALFloat = 0,
-                         priority: ALConstraintPriority = .default,
-                         isActive: ALActivation = .active) -> ALConstraint {
+    public func trailing(_ relation: NSLayoutRelation = .equal,
+                         to view: Lollipop,
+                         offset: CGFloat = 0,
+                         priority: ALLayoutPriority = .default,
+                         active: Bool = true) -> ALConstraint {
+        return trailing(relation, to: view.trailingAnchor, offset: offset, priority: priority, active: active)
+    }
+    @discardableResult
+    public func trailing(_ relation: NSLayoutRelation = .equal,
+                         to anchor: ALXAxisAnchor,
+                         offset: CGFloat = 0,
+                         priority: ALLayoutPriority = .default,
+                         active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return trailingAnchor.constraint(equalTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return trailingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return trailingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return trailingAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return trailingAnchor.constraint(lessThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return trailingAnchor.constraint(greaterThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
         }
     }
     
     @discardableResult
-    public func right(_ relation: ALConstraintRelation,
-                      _ view: Lollipop,
-                      anchor: ALXAxisAnchor? = nil,
-                      offset: ALFloat = 0,
-                      priority: ALConstraintPriority = .default,
-                      isActive: ALActivation = .active) -> ALConstraint {
+    public func right(_ relation: NSLayoutRelation,
+                      to view: Lollipop,
+                      offset: CGFloat = 0,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> ALConstraint {
+        return right(relation, to: view.rightAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func right(_ relation: NSLayoutRelation,
+                      to anchor: ALXAxisAnchor,
+                      offset: CGFloat = 0,
+                      priority: ALLayoutPriority = .default,
+                      active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return rightAnchor.constraint(equalTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return rightAnchor.constraint(lessThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return rightAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return rightAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return rightAnchor.constraint(lessThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return rightAnchor.constraint(greaterThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
         }
     }
 }
@@ -424,18 +533,26 @@ public extension Lollipop {
 // MARK: - Top
 public extension Lollipop {
     @discardableResult
-    public func top(_ relation: ALConstraintRelation,
-                    _ view: Lollipop,
-                    anchor: ALYAxisAnchor? = nil,
-                    offset: ALFloat = 0,
-                    priority: ALConstraintPriority = .default,
-                    isActive: ALActivation = .active) -> ALConstraint {
+    public func top(_ relation: NSLayoutRelation,
+                    to view: Lollipop,
+                    offset: CGFloat = 0,
+                    priority: ALLayoutPriority = .default,
+                    active: Bool = true) -> ALConstraint {
+        return top(relation, to: view.topAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func top(_ relation: NSLayoutRelation,
+                    to anchor: ALYAxisAnchor,
+                    offset: CGFloat = 0,
+                    priority: ALLayoutPriority = .default,
+                    active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return topAnchor.constraint(equalTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return topAnchor.constraint(lessThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return topAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return topAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return topAnchor.constraint(lessThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return topAnchor.constraint(greaterThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
         }
     }
 }
@@ -443,30 +560,60 @@ public extension Lollipop {
 // MARK: - Bottom
 public extension Lollipop {
     @discardableResult
-    public func bottom(_ relation: ALConstraintRelation,
-                       _ view: Lollipop,
-                       anchor: ALYAxisAnchor? = nil,
-                       offset: ALFloat = 0,
-                       priority: ALConstraintPriority = .default,
-                       isActive: ALActivation = .active) -> ALConstraint {
+    public func bottom(_ relation: NSLayoutRelation,
+                       to view: Lollipop,
+                       offset: CGFloat = 0,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> ALConstraint {
+        return bottom(relation, to: view.bottomAnchor, offset: offset, priority: priority, active: active)
+    }
+    
+    @discardableResult
+    public func bottom(_ relation: NSLayoutRelation,
+                       to anchor: ALYAxisAnchor,
+                       offset: CGFloat = 0,
+                       priority: ALLayoutPriority = .default,
+                       active: Bool = true) -> ALConstraint {
         prepareForLayoutIfNeeded()
         
         switch relation {
-        case .equalTo: return bottomAnchor.constraint(equalTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .lessThanOrEqualTo: return bottomAnchor.constraint(lessThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
-        case .greaterThanOrEqualTo: return bottomAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority: priority).set(active: isActive)
+        case .equal: return bottomAnchor.constraint(equalTo: anchor, constant: offset).priority(priority).active(active)
+        case .lessThanOrEqual: return bottomAnchor.constraint(lessThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
+        case .greaterThanOrEqual: return bottomAnchor.constraint(greaterThanOrEqualTo: anchor, constant: offset).priority(priority).active(active)
         }
     }
 }
 
+// MARK: - Operators
+// MARK: EqualTo
+infix operator ~
+public func ~ (lhs: NSLayoutDimension, rhs: CGFloat) -> ALConstraint { return lhs.constraint(equalToConstant: rhs).active() }
+public func ~ (lhs: NSLayoutDimension, rhs: NSLayoutDimension) -> ALConstraint { return lhs.constraint(equalTo: rhs).active() }
+public func ~ (lhs: ALXAxisAnchor, rhs: ALXAxisAnchor) -> ALConstraint { return lhs.constraint(equalTo: rhs).active() }
+public func ~ (lhs: ALYAxisAnchor, rhs: ALYAxisAnchor) -> ALConstraint { return lhs.constraint(equalTo: rhs).active() }
+
+// MARK: GreaterThanOrEqualTo
+infix operator >~
+public func >~ (lhs: NSLayoutDimension, rhs: CGFloat) -> ALConstraint { return lhs.constraint(greaterThanOrEqualToConstant: rhs).active() }
+public func >= (lhs: NSLayoutDimension, rhs: NSLayoutDimension) -> ALConstraint { return lhs.constraint(greaterThanOrEqualTo: rhs).active() }
+public func >~ (lhs: ALXAxisAnchor, rhs: ALXAxisAnchor) -> ALConstraint { return lhs.constraint(greaterThanOrEqualTo: rhs).active() }
+public func >~ (lhs: ALYAxisAnchor, rhs: ALYAxisAnchor) -> ALConstraint { return lhs.constraint(greaterThanOrEqualTo: rhs).active() }
+
+// MARK: LessThanOrEqualTo
+infix operator <~
+public func <~ (lhs: NSLayoutDimension, rhs: CGFloat) -> ALConstraint { return lhs.constraint(lessThanOrEqualToConstant: rhs).active() }
+public func <~ (lhs: NSLayoutDimension, rhs: NSLayoutDimension) -> ALConstraint { return lhs.constraint(lessThanOrEqualTo: rhs).active() }
+public func <~ (lhs: ALXAxisAnchor, rhs: ALXAxisAnchor) -> ALConstraint { return lhs.constraint(lessThanOrEqualTo: rhs).active() }
+public func <~ (lhs: ALYAxisAnchor, rhs: ALYAxisAnchor) -> ALConstraint { return lhs.constraint(lessThanOrEqualTo: rhs).active() }
+
 // MARK: - Hugging/CompressionResistance
 public extension ALView {
-    public func setHugging(priority: ALConstraintPriority, for axis: ALConstraintAxis) {
-        setContentHuggingPriority(priority.value, for: axis)
+    public func setHugging(priority: ALLayoutPriority, for axis: ALConstraintAxis) {
+        setContentHuggingPriority(priority.rawValue, for: axis)
     }
     
-    public func setCompressionResistance(priority: ALConstraintPriority, for axis: ALConstraintAxis) {
-        setContentCompressionResistancePriority(priority.value, for: axis)
+    public func setCompressionResistance(priority: ALLayoutPriority, for axis: ALConstraintAxis) {
+        setContentCompressionResistancePriority(priority.rawValue, for: axis)
     }
 }
 
@@ -475,13 +622,13 @@ public extension ALView {
     @discardableResult
     public func stack(_ views: [ALView],
                       axis: ALConstraintAxis = .vertical,
-                      width: ALFloat? = nil,
-                      height: ALFloat? = nil,
-                      spacing: ALFloat = 0) -> [ALConstraint] {
+                      width: CGFloat? = nil,
+                      height: CGFloat? = nil,
+                      spacing: CGFloat = 0) -> [ALConstraint] {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        var offset: ALFloat = 0
+        var offset: CGFloat = 0
         var previous: ALView?
         var constraints: [ALConstraint] = []
         
@@ -491,29 +638,29 @@ public extension ALView {
             
             switch axis {
             case .vertical:
-                constraints.append(view.top(.equalTo, previous ?? self, anchor: previous?.bottomAnchor ?? topAnchor, offset: offset))
-                constraints.append(view.left(.equalTo, self))
-                constraints.append(view.right(.equalTo, self))
+                constraints.append(view.top(.equal, to: previous?.bottomAnchor ?? topAnchor, offset: offset))
+                constraints.append(view.left(.equal, to: self))
+                constraints.append(view.right(.equal, to: self))
                 
                 if let lastView = views.last, view == lastView {
-                    constraints.append(view.bottom(.equalTo, self))
+                    constraints.append(view.bottom(.equal, to: self))
                 }
             case .horizontal:
-                constraints.append(view.top(.equalTo, self))
-                constraints.append(view.bottom(.equalTo, self))
-                constraints.append(view.left(.equalTo, previous ?? self, anchor: previous?.rightAnchor ?? leftAnchor, offset: offset))
+                constraints.append(view.top(.equal, to: self))
+                constraints.append(view.bottom(.equal, to: self))
+                constraints.append(view.left(.equal, to: previous?.rightAnchor ?? leftAnchor, offset: offset))
                 
                 if let lastView = views.last, view == lastView {
-                    constraints.append(view.right(.equalTo, self))
+                    constraints.append(view.right(.equal, to: self))
                 }
             }
             
             if let width = width {
-                constraints.append(view.width(.equalTo, width))
+                constraints.append(view.width(.equal, to: width))
             }
             
             if let height = height {
-                constraints.append(view.height(.equalTo, height))
+                constraints.append(view.height(.equal, to: height))
             }
             
             offset = spacing
